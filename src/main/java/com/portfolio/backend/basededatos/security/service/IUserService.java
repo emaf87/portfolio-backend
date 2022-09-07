@@ -1,21 +1,21 @@
-
 package com.portfolio.backend.basededatos.security.service;
 
-import com.portfolio.backend.basededatos.security.model.User;
+import com.portfolio.backend.basededatos.security.model.Usuario;
 import java.util.List;
 import java.util.Optional;
 
+public interface IUserService {
 
-public interface IUserService{
-    
-    public List<User> getUsers();
-    
-    public void saveUser(User user);
-    
+    public List<Usuario> getUsers();
+
+    public void saveUser(Usuario user);
+
     public void deleteUser(int id);
-    
-    public User findUser(int id);
-    
-    public User findByEmail(String email);
+
+    public Usuario findUser(int id);
+
+    public Optional<Usuario> findByEmail(String email);
+
+    public Boolean existsByEmail(String email);
 
 }

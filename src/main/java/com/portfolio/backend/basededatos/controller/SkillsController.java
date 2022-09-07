@@ -4,6 +4,7 @@ import com.portfolio.backend.basededatos.model.Skills;
 import com.portfolio.backend.basededatos.service.ISkillsService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +38,7 @@ public class SkillsController {
         return iSkillsService.findSkill(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     @ResponseBody
     public String saveSkill(@RequestBody Skills skill) {
@@ -44,12 +46,14 @@ public class SkillsController {
         return "Skill guardado";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public String deleteSkill(@PathVariable int id) {
         iSkillsService.deleteSkill(id);
         return "Skill eliminado correctamente";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public Skills updateSkill(@PathVariable int id,
             @RequestBody Skills skill) {

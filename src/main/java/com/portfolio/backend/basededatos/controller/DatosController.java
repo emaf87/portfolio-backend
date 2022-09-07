@@ -4,6 +4,7 @@ import com.portfolio.backend.basededatos.model.Datos;
 import com.portfolio.backend.basededatos.service.IDatosService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +40,7 @@ public class DatosController {
         return data;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     @ResponseBody
     public String saveDatos(@RequestBody Datos data) {
@@ -46,12 +48,14 @@ public class DatosController {
         return "datos guardados";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public String deleteDato(@PathVariable int id){
         interDatos.deleteDatos(id);
         return "Dato eliminado";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public Datos updateDato(@PathVariable int id,
             @RequestBody Datos data){

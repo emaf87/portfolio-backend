@@ -1,7 +1,6 @@
 
 package com.portfolio.backend.basededatos.model;
 
-
 import javax.persistence.Basic;
 
 import javax.persistence.Entity;
@@ -28,4 +27,6 @@ public class Datos {
     private String nacionalidad;
     private String acercade; 
    
+    
+    
 }

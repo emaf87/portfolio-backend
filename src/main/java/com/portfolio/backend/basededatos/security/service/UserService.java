@@ -1,7 +1,7 @@
 
 package com.portfolio.backend.basededatos.security.service;
 
-import com.portfolio.backend.basededatos.security.model.User;
+import com.portfolio.backend.basededatos.security.model.Usuario;
 import com.portfolio.backend.basededatos.security.repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
@@ -15,12 +15,12 @@ public class UserService implements IUserService{
     private UserRepository userRepository;
 
     @Override
-    public List<User> getUsers() {
+    public List<Usuario> getUsers() {
         return userRepository.findAll();
     }
 
     @Override
-    public void saveUser(User user) {
+    public void saveUser(Usuario user) {
         userRepository.save(user);
     }
 
@@ -30,16 +30,18 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public User findUser(int id) {
+    public Usuario findUser(int id) {
         return userRepository.findById(id).orElse(null);
     }
 
     @Override
-    public User findByEmail(String email) {
+    public Optional<Usuario> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
-    
-
+    @Override
+    public Boolean existsByEmail(String email) {
+       return userRepository.existsByEmail(email);
+    }
     
 }
