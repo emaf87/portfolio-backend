@@ -1,6 +1,6 @@
-
 package com.portfolio.backend.basededatos.model;
 
+import com.sun.istack.NotNull;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,21 +9,19 @@ import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-
-@Getter
-@Setter
 @Entity
-public class Educacion {
-    
-    
+@Setter
+@Getter
+public class Proyect {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_edu;
+    private int id;
     @Basic
-    private String nivel;
-    private String titulo;
-    private String institucion;
-    private String inicio;
-    private String  fin;
-    private String logo;
+    @NotNull
+    private String name;
+    @NotNull
+    private String url;
+    @NotNull
+    private String image;
 }

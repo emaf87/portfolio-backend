@@ -12,16 +12,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Experiencia {
+public class Experience {
     
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_exp;
     @Basic
-    private String puesto;
-    private String empresa;
-    private String inicio;
-    private String fin;
+    private String job;
+    private String company;
+    private String started;
+    private String ended;
     private String logo;
 }

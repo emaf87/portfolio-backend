@@ -1,35 +1,35 @@
 
 package com.portfolio.backend.basededatos.service;
 
-import com.portfolio.backend.basededatos.model.Proyecto;
-import com.portfolio.backend.basededatos.repository.ProyectoRepository;
+import com.portfolio.backend.basededatos.model.Proyect;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.portfolio.backend.basededatos.repository.ProyectRepository;
 
 @Service
-public class ProyectoService implements IProyectoService{
+public class ProyectoService implements IProyectService{
 
     @Autowired
-    private ProyectoRepository proyectoRepository;
+    private ProyectRepository proyectoRepository;
     
     @Override
-    public List<Proyecto> getProyectos() {
+    public List<Proyect> getProyects() {
         return proyectoRepository.findAll();
     }
 
     @Override
-    public void saveProyecto(Proyecto proy) {
+    public void saveProyect(Proyect proy) {
         proyectoRepository.save(proy);
     }
 
     @Override
-    public void deleteProyecto(int id) {
+    public void deleteProyect(int id) {
         proyectoRepository.deleteById(id);
     }
 
     @Override
-    public Proyecto findProyecto(int id) {
+    public Proyect findProyect(int id) {
         return proyectoRepository.findById(id).orElse(null);
     }
     

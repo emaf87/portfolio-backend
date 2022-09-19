@@ -1,4 +1,3 @@
-
 package com.portfolio.backend.basededatos.security;
 
 import java.io.IOException;
@@ -10,11 +9,15 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 @Component
-public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint{
+public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+    public void commence(HttpServletRequest request, HttpServletResponse response,
+            AuthenticationException authException) throws IOException, ServletException {
+       // System.out.println(request);
+       // System.out.println(authException.getMessage());
+
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
     }
-    
+
 }

@@ -4,11 +4,11 @@
  */
 package com.portfolio.backend.basededatos.repository;
 
-import com.portfolio.backend.basededatos.model.Educacion;
+import com.portfolio.backend.basededatos.model.Education;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EducacionRepository extends JpaRepository<Educacion, Integer>{
+public interface EducationRepository extends JpaRepository<Education, Integer>{
     
 }

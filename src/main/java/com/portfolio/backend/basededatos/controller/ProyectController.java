@@ -4,8 +4,7 @@
  */
 package com.portfolio.backend.basededatos.controller;
 
-import com.portfolio.backend.basededatos.model.Proyecto;
-import com.portfolio.backend.basededatos.service.IProyectoService;
+import com.portfolio.backend.basededatos.model.Proyect;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,50 +18,51 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.portfolio.backend.basededatos.service.IProyectService;
 
 @CrossOrigin(origins = "*", methods = {RequestMethod.DELETE, RequestMethod.GET,
     RequestMethod.PUT, RequestMethod.POST})
 @RestController
-@RequestMapping("/proyecto")
-public class ProyectoController {
+@RequestMapping("/api/proyect")
+public class ProyectController {
 
     @Autowired
-    private IProyectoService iProyectoService;
+    private IProyectService iProyectService;
 
     @GetMapping
     @ResponseBody
-    public List<Proyecto> getProyectos() {
-        return iProyectoService.getProyectos();
+    public List<Proyect> getProyectos() {
+        return iProyectService.getProyects();
     }
 
     @GetMapping("/{id}")
     @ResponseBody
-    public Proyecto findProyecto(@PathVariable int id) {
-        return iProyectoService.findProyecto(id);
+    public Proyect findProyecto(@PathVariable int id) {
+        return iProyectService.findProyect(id);
     }
 
     @PostMapping
-    public String saveProyecto(@RequestBody Proyecto proy) {
-        iProyectoService.saveProyecto(proy);
+    public String saveProyecto(@RequestBody Proyect proy) {
+        iProyectService.saveProyect(proy);
         return "Proyecto guardado";
     }
 
     @DeleteMapping("/{id}")
     public String deleteProyecto(@PathVariable int id) {
-        iProyectoService.deleteProyecto(id);
+        iProyectService.deleteProyect(id);
         return "Proyecto eliminado";
     }
 
     @PutMapping("/{id}")
-    public Proyecto editProyecto(@PathVariable int id,
-                                   @RequestBody Proyecto proy) {
-        Proyecto nuevoProy = iProyectoService.findProyecto(id);
+    public Proyect editProyect(@PathVariable int id,
+                                   @RequestBody Proyect proy) {
+        Proyect newProyect = iProyectService.findProyect(id);
 
-        nuevoProy.setNombre(proy.getNombre());
-        nuevoProy.setImg(proy.getImg());
-        nuevoProy.setUrl(proy.getUrl());
+        newProyect.setName(proy.getName());
+        newProyect.setImage(proy.getImage());
+        newProyect.setUrl(proy.getUrl());
 
-        iProyectoService.saveProyecto(nuevoProy);
-        return nuevoProy;
+        iProyectService.saveProyect(newProyect);
+        return newProyect;
     }
 }

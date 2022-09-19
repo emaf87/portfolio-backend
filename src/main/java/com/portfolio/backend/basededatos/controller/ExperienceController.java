@@ -1,7 +1,6 @@
 package com.portfolio.backend.basededatos.controller;
 
-import com.portfolio.backend.basededatos.model.Experiencia;
-import com.portfolio.backend.basededatos.service.IExperienciaService;
+import com.portfolio.backend.basededatos.model.Experience;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,51 +14,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.portfolio.backend.basededatos.service.IExperienceService;
 
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
 @RestController
-@RequestMapping("/experiencia")
-public class ExperienciaController {
+@RequestMapping("/api/experience")
+public class ExperienceController {
 
     @Autowired
-    private IExperienciaService interExperiencia;
+    private IExperienceService iExperienceService;
 
     @GetMapping
     @ResponseBody
-    public List<Experiencia> getExperiencia() {
-        return interExperiencia.getExperiencias();
+    public List<Experience> getExperiencia() {
+        return iExperienceService.getExperience();
     }
     
     @GetMapping("/{id}")
-    public Experiencia getExperiencia(@PathVariable int id){
-        return interExperiencia.findExperiencia(id);
+    public Experience getExperiencia(@PathVariable int id){
+        return iExperienceService.findExperience(id);
     }
 
     @PostMapping
-    public String saveExperiencia(@RequestBody Experiencia exp) {
-        interExperiencia.saveExperiencia(exp);
+    public String saveExperiencia(@RequestBody Experience exp) {
+        iExperienceService.saveExperience(exp);
         return "Experiencia guardada";
     }
     
     @DeleteMapping("/{id}")
     public String deleteExperiencia(@PathVariable int id){
-        interExperiencia.deleteExperiencia(id);
+        iExperienceService.deleteExperience(id);
         return "Experiencia eliminada";
     }
     
     @PutMapping("/{id}")
-    public Experiencia updateExperiencia(@PathVariable int id,
-            @RequestBody Experiencia exp){
+    public Experience updateExperiencia(@PathVariable int id,
+            @RequestBody Experience exp){
         
-        Experiencia updateExperiencia = interExperiencia.findExperiencia(id);
+        Experience updateExperiencia = iExperienceService.findExperience(id);
         
-        updateExperiencia.setPuesto(exp.getPuesto());
-        updateExperiencia.setEmpresa(exp.getEmpresa());
-        updateExperiencia.setInicio(exp.getInicio());
-        updateExperiencia.setFin(exp.getFin());
+        updateExperiencia.setJob(exp.getJob());
+        updateExperiencia.setCompany(exp.getCompany());
+        updateExperiencia.setStarted(exp.getStarted());
+        updateExperiencia.setEnded(exp.getEnded());
         updateExperiencia.setLogo(exp.getLogo());
         
-        interExperiencia.saveExperiencia(updateExperiencia);
+        iExperienceService.saveExperience(updateExperiencia);
         
         return updateExperiencia;
     }

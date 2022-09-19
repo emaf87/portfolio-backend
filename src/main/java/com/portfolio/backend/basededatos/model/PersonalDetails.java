@@ -14,18 +14,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Datos {
+public class PersonalDetails {
  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Basic
-    private String nombre;
-    private String apellido;
-    private String titulo;
-    private String ciudad;
-    private String nacionalidad;
-    private String acercade; 
+    private String name;
+    private String lastname;
+    private String degree;
+    private String city;
+    private String nationality;
+    private String aboutMe; 
    
     
     

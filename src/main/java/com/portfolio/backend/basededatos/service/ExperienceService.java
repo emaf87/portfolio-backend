@@ -4,35 +4,35 @@
  */
 package com.portfolio.backend.basededatos.service;
 
-import com.portfolio.backend.basededatos.model.Experiencia;
-import com.portfolio.backend.basededatos.repository.ExperienciaRepository;
+import com.portfolio.backend.basededatos.model.Experience;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.portfolio.backend.basededatos.repository.ExperienceRepository;
 
 @Service
-public class ExperienciaService implements IExperienciaService{
+public class ExperienceService implements IExperienceService{
 
     @Autowired
-    private ExperienciaRepository experienciaRepository;
+    private ExperienceRepository experienciaRepository;
     
     @Override
-    public List<Experiencia> getExperiencias() {
+    public List<Experience> getExperience() {
         return experienciaRepository.findAll();
     }
 
     @Override
-    public void saveExperiencia(Experiencia exp) {
+    public void saveExperience(Experience exp) {
         experienciaRepository.save(exp);
     }
 
     @Override
-    public void deleteExperiencia(int id) {
+    public void deleteExperience(int id) {
         experienciaRepository.deleteById(id);
     }
 
     @Override
-    public Experiencia findExperiencia(int id) {
+    public Experience findExperience(int id) {
         return experienciaRepository.findById(id).orElse(null);
     }
     

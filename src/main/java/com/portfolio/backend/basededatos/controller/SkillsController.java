@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/skills")
+@RequestMapping("/api/skills")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
 
 public class SkillsController {
@@ -57,11 +57,9 @@ public class SkillsController {
     @PutMapping("/{id}")
     public Skills updateSkill(@PathVariable int id,
             @RequestBody Skills skill) {
-
         Skills updateSkill = iSkillsService.findSkill(id);
-
-        updateSkill.setNombre(skill.getNombre());
-        updateSkill.setValor(skill.getValor());
+        updateSkill.setName(skill.getName());
+        updateSkill.setValue(skill.getValue());
         iSkillsService.saveSkill(updateSkill);
         return updateSkill;
     }

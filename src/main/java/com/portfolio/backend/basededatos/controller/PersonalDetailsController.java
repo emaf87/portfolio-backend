@@ -1,7 +1,6 @@
 package com.portfolio.backend.basededatos.controller;
 
-import com.portfolio.backend.basededatos.model.Datos;
-import com.portfolio.backend.basededatos.service.IDatosService;
+import com.portfolio.backend.basededatos.model.PersonalDetails;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,60 +15,61 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.portfolio.backend.basededatos.service.IPersonalDetailsService;
 
 @CrossOrigin(origins = "*", methods = {RequestMethod.DELETE, RequestMethod.GET,
-    RequestMethod.PUT, RequestMethod.POST})
+   RequestMethod.PUT, RequestMethod.POST})
 @RestController
-@RequestMapping("/datos")
-public class DatosController {
+@RequestMapping("/api/personaldetails")
+public class PersonalDetailsController {
 
     @Autowired
-    private IDatosService interDatos;
+    private IPersonalDetailsService iPersonalDetailsService;
 
     @GetMapping
     @ResponseBody
-    public List<Datos> getDatos() {
-        return interDatos.getDatos();
+    public List<PersonalDetails> getPersonalDetails() {
+        return iPersonalDetailsService.getPersonalDetails();
     }
     
     @GetMapping("/{id}")
     @ResponseBody
-    public Datos getDato(@PathVariable int id){
+    public PersonalDetails getPersonalDetails(@PathVariable int id){
         
-        Datos data =  interDatos.findDato(id);
+        PersonalDetails data =  iPersonalDetailsService.findPersonalDetails(id);
         return data;
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     @ResponseBody
-    public String saveDatos(@RequestBody Datos data) {
-        interDatos.saveDatos(data);
+    public String savePersonalDetails(@RequestBody PersonalDetails data) {
+        iPersonalDetailsService.savePersonalDetails(data);
         return "datos guardados";
     }
     
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
-    public String deleteDato(@PathVariable int id){
-        interDatos.deleteDatos(id);
+    public String deletePersonalDetails(@PathVariable int id){
+        iPersonalDetailsService.deletePersonalDetails(id);
         return "Dato eliminado";
     }
     
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
-    public Datos updateDato(@PathVariable int id,
-            @RequestBody Datos data){
+    public PersonalDetails updatePersonalDetails(@PathVariable int id,
+            @RequestBody PersonalDetails data){
         
-        Datos updateDato = interDatos.findDato(id);
+        PersonalDetails updateDato = iPersonalDetailsService.findPersonalDetails(id);
         
-        updateDato.setNombre(data.getNombre());
-        updateDato.setApellido(data.getApellido());
-        updateDato.setCiudad(data.getCiudad());
-        updateDato.setAcercade(data.getAcercade());
-        updateDato.setNacionalidad(data.getNacionalidad());
-        updateDato.setTitulo(data.getTitulo());
+        updateDato.setName(data.getName());
+        updateDato.setLastname(data.getLastname());
+        updateDato.setCity(data.getCity());
+        updateDato.setAboutMe(data.getAboutMe());
+        updateDato.setNationality(data.getNationality());
+        updateDato.setDegree(data.getDegree());
         
-        interDatos.saveDatos(updateDato);
+        iPersonalDetailsService.savePersonalDetails(updateDato);
         return updateDato;
     }
     
