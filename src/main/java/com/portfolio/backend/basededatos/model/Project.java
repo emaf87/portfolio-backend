@@ -1,4 +1,4 @@
-package com.portfolio.backend.basededatos.model;
+    package com.portfolio.backend.basededatos.model;
 
 import com.sun.istack.NotNull;
 import javax.persistence.Basic;
@@ -12,16 +12,16 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-public class Proyect {
+public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Basic
-    @NotNull
+    private int rowIndex;
     private String name;
-    @NotNull
+    private String description;
+    private String date;
     private String url;
-    @NotNull
     private String image;
 }

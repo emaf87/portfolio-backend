@@ -14,4 +14,6 @@ public interface ISkillsService {
     public void deleteSkill(int id);
     
     public Skills findSkill(int id);
+    
+    public void saveSkillsList(List<Skills> skillList);
 }

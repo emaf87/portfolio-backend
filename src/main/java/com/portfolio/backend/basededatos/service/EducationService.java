@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.portfolio.backend.basededatos.service;
 
 import com.portfolio.backend.basededatos.model.Education;
@@ -35,5 +32,9 @@ public class EducationService implements IEducationService{
     public Education findEducation(int id) {
         return educationRepository.findById(id).orElse(null);
     }
-    
+
+    @Override
+    public void saveEducationList(List<Education> eduList) {
+        educationRepository.saveAll(eduList);
+    }
 }

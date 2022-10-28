@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.backend.basededatos.service.IPersonalDetailsService;
 
-@CrossOrigin(origins = "*", methods = {RequestMethod.DELETE, RequestMethod.GET,
+@CrossOrigin(origins = "https://miporfolio-eaf.web.app/*", methods = {RequestMethod.DELETE, RequestMethod.GET,
    RequestMethod.PUT, RequestMethod.POST})
 @RestController
 @RequestMapping("/api/personaldetails")

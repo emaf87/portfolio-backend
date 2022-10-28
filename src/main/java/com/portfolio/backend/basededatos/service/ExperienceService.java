@@ -35,5 +35,10 @@ public class ExperienceService implements IExperienceService{
     public Experience findExperience(int id) {
         return experienciaRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public void saveExperieceList(List<Experience> expList) {
+        experienciaRepository.saveAll(expList);
+    }
     
 }

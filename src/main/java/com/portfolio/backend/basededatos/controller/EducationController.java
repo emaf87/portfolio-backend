@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.backend.basededatos.service.IEducationService;
 
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
+@CrossOrigin(origins = "https://miporfolio-eaf.web.app/*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
 @RestController
 @RequestMapping("/api/education")
 public class EducationController {
@@ -48,7 +48,7 @@ public class EducationController {
     }
 
     @PutMapping("/{id}")
-    public Education updateSkill(@PathVariable int id,
+    public Education updateEducation(@PathVariable int id,
             @RequestBody Education edu) {
 
         Education updateEducacion = iEducationService.findEducation(id);
@@ -62,6 +62,12 @@ public class EducationController {
 
         iEducationService.saveEducation(updateEducacion);
         return updateEducacion;
+    }
+    
+    @PutMapping("/savelist")
+    public String saveEducationList(@RequestBody List<Education> eduList){
+        iEducationService.saveEducationList(eduList);
+        return "Lista guardada";
     }
 
 }

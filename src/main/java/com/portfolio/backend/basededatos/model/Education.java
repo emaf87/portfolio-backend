@@ -18,6 +18,7 @@ public class Education {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_edu;
     @Basic
+    private int rowIndex;
     private String grade;
     private String degree;
     private String institution;

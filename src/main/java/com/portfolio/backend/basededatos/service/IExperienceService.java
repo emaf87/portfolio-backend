@@ -13,4 +13,7 @@ public interface IExperienceService {
     public void deleteExperience(int id);
     
     public Experience findExperience(int id);
+    
+    public void saveExperieceList(List<Experience> expList);
+    
 }

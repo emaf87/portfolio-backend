@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.backend.basededatos.service.IExperienceService;
 
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
+@CrossOrigin(origins = "https://miporfolio-eaf.web.app/*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
 @RestController
 @RequestMapping("/api/experience")
 public class ExperienceController {
@@ -62,5 +62,11 @@ public class ExperienceController {
         iExperienceService.saveExperience(updateExperiencia);
         
         return updateExperiencia;
+    }
+    
+     @PutMapping("/savelist")
+    public String saveEducationList(@RequestBody List<Experience> expList){
+        iExperienceService.saveExperieceList(expList);
+        return "Lista guardada";
     }
 }

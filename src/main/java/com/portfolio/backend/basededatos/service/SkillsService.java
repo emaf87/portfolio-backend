@@ -32,4 +32,9 @@ public class SkillsService implements ISkillsService{
     public Skills findSkill(int id) {
         return skillsRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public void saveSkillsList(List<Skills> skillList) {
+        skillsRepository.saveAll(skillList);
+    }
 }

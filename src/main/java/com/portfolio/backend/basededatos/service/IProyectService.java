@@ -2,21 +2,21 @@
 package com.portfolio.backend.basededatos.service;
 
 
-import com.portfolio.backend.basededatos.model.Proyect;
+import com.portfolio.backend.basededatos.model.Project;
 import java.util.List;
 
 
 public interface IProyectService {
     
-    public List<Proyect> getProyects();
+    public List<Project> getProjects();
     
-    public void saveProyect(Proyect proy);
+    public void saveProject(Project proy);
     
-    public void deleteProyect(int id);
+    public void deleteProject(int id);
     
-    public Proyect findProyect(int id);
+    public Project findProject(int id);
     
-   
+   public void saveProjectsList(List<Project> projList);
     
     
 }

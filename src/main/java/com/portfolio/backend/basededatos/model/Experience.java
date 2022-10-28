@@ -19,6 +19,7 @@ public class Experience {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_exp;
     @Basic
+    private int rowIndex;
     private String job;
     private String company;
     private String started;
