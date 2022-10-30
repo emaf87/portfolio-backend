@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*", methods = {RequestMethod.DELETE, RequestMethod.GET,
     RequestMethod.PUT, RequestMethod.POST})
 @RestController
-@RequestMapping("/auth/user")
+@RequestMapping("/api/auth/user")
 public class UserController {
 
     @Autowired

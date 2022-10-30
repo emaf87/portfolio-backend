@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.backend.basededatos.service.IEducationService;
 
-@CrossOrigin(origins = "https://miporfolio-eaf.web.app/", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
 @RestController
 @RequestMapping("/api/education")
 public class EducationController {
