@@ -10,6 +10,6 @@ public class PasswordEncoderGenerator {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         System.out.println("password");
 
-        System.out.println(passwordEncoder.encode("password"));
+        System.out.println(passwordEncoder.encode("Admin.Portfolio#87"));
     }
 }
